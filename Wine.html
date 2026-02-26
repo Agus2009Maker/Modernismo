@@ -2,52 +2,106 @@
 <html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instalar Wine - Playtime Launcher</title>
     <link rel="stylesheet" href="Web.css">
+    <link rel="icon" href="./Assets/icon.png">
 </head>
 <body>
+
     <nav class="navbar">
-        <ul><li><a href="Web.html">Volver al Inicio</a></li></ul>
+        <ul>
+            <li><a href="index.html">← Volver al Inicio</a></li>
+        </ul>
+        <button id="theme-toggle" class="btn-neon">Modo Diurno ☀️</button>
     </nav>
 
     <main class="slide-up">
-        <section class="glass-panel">
-            <h1 class="neon-text">Instalación de Wine (Debian 10 - 13)</h1>
-            <p>Sigue estos pasos para poder ejecutar los capítulos de Poppy Playtime en Linux.</p>
-            
-            <div class="step">
-                <h3>Paso 1: Habilitar 32 bits</h3>
+        <h1 class="neon-text">Instalación de Wine</h1>
+        <p style="text-align:center; color:var(--text-muted); margin-bottom:32px; font-size:0.92rem;">Para ejecutar los capítulos de Poppy Playtime en Linux (Debian 10–13)</p>
+
+        <div class="glass-panel" style="margin-bottom:24px;">
+            <p style="color:var(--text-muted); font-size:0.9rem;">Sigue estos pasos <strong style="color:var(--text-color);">en orden</strong>. Cada comando debe completarse antes de pasar al siguiente. Si ya tienes Wine instalado, verifica la versión con <code>wine --version</code>.</p>
+        </div>
+
+        <div class="step">
+            <h3>Paso 1 — Habilitar arquitectura 32 bits</h3>
+            <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:8px;">Wine necesita soporte de 32 bits para ejecutar juegos correctamente.</p>
+            <div class="code-wrapper">
                 <code>sudo dpkg --add-architecture i386</code>
+                <button class="copy-btn">COPIAR</button>
             </div>
+        </div>
 
-            <div class="step">
-                <h3>Paso 2: Agregar repositorio oficial (WineHQ)</h3>
-                <p>Descarga la llave de seguridad:</p>
-                <code>sudo mkdir -pm755 /etc/apt/keyrings</code><br>
+        <div class="step">
+            <h3>Paso 2 — Crear directorio para llaves</h3>
+            <div class="code-wrapper">
+                <code>sudo mkdir -pm755 /etc/apt/keyrings</code>
+                <button class="copy-btn">COPIAR</button>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>Paso 3 — Descargar llave de seguridad (WineHQ)</h3>
+            <div class="code-wrapper">
                 <code>sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key</code>
+                <button class="copy-btn">COPIAR</button>
             </div>
+        </div>
 
-            <div class="step">
-                <h3>Paso 3: Selecciona tu versión de Debian</h3>
-                <p>Ejecuta SOLO el comando que corresponda a tu sistema:</p>
-                
-                <strong>Debian 12/13:</strong>
+        <div class="step">
+            <h3>Paso 4 — Agregar repositorio según tu versión de Debian</h3>
+            <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:10px;">Ejecuta <strong style="color:var(--text-color);">solo el comando</strong> que corresponda a tu sistema:</p>
+
+            <p style="font-size:0.85rem; margin-bottom:4px;"><strong>Debian 12 / 13 (Bookworm):</strong></p>
+            <div class="code-wrapper">
                 <code>sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources</code>
-                
-                <strong>Debian 11:</strong>
+                <button class="copy-btn">COPIAR</button>
+            </div>
+
+            <p style="font-size:0.85rem; margin: 14px 0 4px;"><strong>Debian 11 (Bullseye):</strong></p>
+            <div class="code-wrapper">
                 <code>sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources</code>
+                <button class="copy-btn">COPIAR</button>
             </div>
 
-            <div class="step">
-                <h3>Paso 4: Instalar Wine</h3>
-                <code>sudo apt update</code><br>
+            <p style="font-size:0.85rem; margin: 14px 0 4px;"><strong>Debian 10 (Buster):</strong></p>
+            <div class="code-wrapper">
+                <code>sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/buster/winehq-buster.sources</code>
+                <button class="copy-btn">COPIAR</button>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>Paso 5 — Actualizar lista de paquetes</h3>
+            <div class="code-wrapper">
+                <code>sudo apt update</code>
+                <button class="copy-btn">COPIAR</button>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>Paso 6 — Instalar Wine estable</h3>
+            <div class="code-wrapper">
                 <code>sudo apt install --install-recommends winehq-stable</code>
+                <button class="copy-btn">COPIAR</button>
             </div>
+        </div>
 
-            <div class="alert">
-                <strong>💡 NOTA:</strong> Al finalizar, verifica con <code>wine --version</code>. Recuerda que esto es para los juegos, no para el launcher.
+        <div class="step">
+            <h3>Paso 7 — Verificar instalación</h3>
+            <div class="code-wrapper">
+                <code>wine --version</code>
+                <button class="copy-btn">COPIAR</button>
             </div>
-        </section>
+            <span class="tip">💡 Deberías ver algo como: <code>wine-9.x.x</code></span>
+        </div>
+
+        <div class="alert">
+            <strong>⚠️ IMPORTANTE:</strong> Wine instala soporte para ejecutar los <em>juegos</em> (.exe), no el launcher en sí (que es nativo para Linux). Consulta el <a href="index.html" style="color:var(--accent);">manual del launcher</a> para configurar los capítulos en Linux.
+        </div>
     </main>
+
+    <script src="Web.js"></script>
 </body>
 </html>

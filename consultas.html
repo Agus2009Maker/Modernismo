@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas y Propuestas - Playtime Launcher</title>
+    <link rel="stylesheet" href="Web.css">
+    <link rel="icon" href="./Assets/icon.png">
+    <style>
+        /* ===== ESTILOS ESPECÍFICOS DEL FORMULARIO ===== */
+        .form-section {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 50px 30px 70px;
+        }
+
+        .form-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-intro p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Selector de tipo */
+        .tipo-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .tipo-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 18px 12px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all var(--transition);
+            cursor: url('./Assets/Custom Cursor/cursor.png'), pointer;
+        }
+
+        .tipo-btn .tipo-icon {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+
+        .tipo-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--card-bg-hover);
+            box-shadow: var(--neon-main);
+        }
+
+        .tipo-btn.activo {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--card-bg-hover);
+            box-shadow: var(--neon-main), inset 0 0 20px rgba(255,255,255,0.03);
+            text-shadow: var(--neon-main);
+        }
+
+        .tipo-btn.activo.bug {
+            border-color: #cc3300;
+            color: #ff6644;
+            box-shadow: var(--neon-red), inset 0 0 20px rgba(200,0,0,0.05);
+            text-shadow: var(--neon-red);
+        }
+
+        /* Campos del formulario */
+        .campo {
+            margin-bottom: 22px;
+        }
+
+        .campo label {
+            display: block;
+            font-size: 0.78rem;
+            font-family: var(--font-mono);
+            font-weight: bold;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .campo label span.requerido {
+            color: #cc3300;
+            text-shadow: var(--neon-red);
+            margin-left: 3px;
+        }
+
+        .campo label span.opcional {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            font-weight: normal;
+            opacity: 0.7;
+            margin-left: 6px;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .campo input,
+        .campo textarea {
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 3px;
+            padding: 12px 15px;
+            color: var(--text-color);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color var(--transition), box-shadow var(--transition);
+            resize: none;
+        }
+
+        .campo input::placeholder,
+        .campo textarea::placeholder {
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        .campo input:focus,
+        .campo textarea:focus {
+            border-color: var(--accent);
+            box-shadow: var(--neon-main), 0 0 0 1px rgba(255,255,255,0.05);
+            background: var(--card-bg-hover);
+        }
+
+        .campo textarea {
+            min-height: 130px;
+            line-height: 1.6;
+        }
+
+        .char-count {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-align: right;
+            margin-top: 5px;
+            opacity: 0.6;
+            font-family: var(--font-mono);
+        }
+
+        .char-count.warning { color: #ffcc00; opacity: 1; }
+        .char-count.limit   { color: #cc3300; opacity: 1; }
+
+        /* Botón enviar */
+        .btn-enviar {
+            width: 100%;
+            padding: 16px;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--text-color);
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            box-shadow: var(--neon-main);
+            transition: all var(--transition);
+            cursor: url('./Assets/Custom Cursor/cursor.png'), pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-enviar::before {
+            content: '';
+            position: absolute;
+            top: -100%; left: 0; right: 0;
+            height: 100%;
+            background: linear-gradient(transparent, rgba(255,255,255,0.05), transparent);
+            transition: top 0.5s ease;
+        }
+
+        .btn-enviar:hover::before { top: 100%; }
+
+        .btn-enviar:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: var(--neon-hover);
+        }
+
+        .btn-enviar:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Feedback */
+        .feedback {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            animation: slideUp 0.4s ease;
+        }
+
+        .feedback.exito {
+            display: block;
+            background: rgba(0, 180, 80, 0.1);
+            border: 1px solid rgba(0,180,80,0.4);
+            color: #00e870;
+            text-shadow: 0 0 8px rgba(0,200,80,0.5);
+        }
+
+        .feedback.error {
+            display: block;
+            background: rgba(200, 0, 0, 0.1);
+            border: 1px solid rgba(200,0,0,0.4);
+            color: #ff6644;
+        }
+
+        /* Contador de envíos */
+        .stats-bar {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 36px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 12px 24px;
+            min-width: 110px;
+        }
+
+        .stat-num {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--accent);
+            text-shadow: var(--neon-main);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.68rem;
+            font-family: var(--font-mono);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 600px) {
+            .tipo-selector { grid-template-columns: 1fr; }
+            .form-section { padding: 40px 15px 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <img src="./Assets/Logo/Mob_Entertainment.png" alt="Mob Entertainment" class="nav-logo">
+        <ul>
+            <li><a href="index.html">← Inicio</a></li>
+            <li><a href="Install.html">Instalación</a></li>
+            <li><a href="Version.html">Versiones</a></li>
+            <li><a href="Wine.html">Wine</a></li>
+        </ul>
+        <button id="theme-toggle" class="btn-neon">Modo Diurno ☀️</button>
+    </nav>
+
+    <main class="form-section fade-in">
+
+        <div class="form-intro">
+            <div class="rec-indicator" style="display:inline-flex; margin-bottom:12px;">TRANSMISIÓN ABIERTA</div>
+            <h1 class="neon-text">Consultas y Propuestas</h1>
+            <p>¿Encontraste un bug? ¿Tenés una idea para mejorar el launcher? Mandanos tu mensaje y lo revisamos.</p>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="stats-bar" id="stats-bar">
+            <div class="stat-item">
+                <span class="stat-num" id="stat-bugs">—</span>
+                <span class="stat-label">Bugs reportados</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num" id="stat-propuestas">—</span>
+                <span class="stat-label">Propuestas</span>
+            </div>
+        </div>
+
+        <!-- Formulario -->
+        <form id="form-consulta" novalidate>
+
+            <!-- Selector de tipo -->
+            <div class="campo">
+                <label>Tipo de consulta <span class="requerido">*</span></label>
+                <div class="tipo-selector">
+                    <button type="button" class="tipo-btn bug" data-valor="bug">
+                        <span class="tipo-icon">🐛</span>
+                        Reporte de Bug
+                    </button>
+                    <button type="button" class="tipo-btn propuesta" data-valor="propuesta">
+                        <span class="tipo-icon">💡</span>
+                        Propuesta / Update
+                    </button>
+                </div>
+                <input type="hidden" id="tipo" name="tipo" value="">
+            </div>
+
+            <!-- Título -->
+            <div class="campo">
+                <label for="titulo">Título <span class="requerido">*</span></label>
+                <input type="text" id="titulo" name="titulo" maxlength="150"
+                       placeholder="Resumí el problema o propuesta en pocas palabras...">
+                <div class="char-count"><span id="titulo-count">0</span> / 150</div>
+            </div>
+
+            <!-- Descripción -->
+            <div class="campo">
+                <label for="descripcion">Descripción <span class="requerido">*</span></label>
+                <textarea id="descripcion" name="descripcion" maxlength="2000"
+                          placeholder="Describí con detalle: qué pasó, en qué versión, cómo reproducirlo... o en qué consiste tu propuesta."></textarea>
+                <div class="char-count"><span id="desc-count">0</span> / 2000</div>
+            </div>
+
+            <!-- Email opcional -->
+            <div class="campo">
+                <label for="email">
+                    Email de contacto
+                    <span class="opcional">(opcional — para responderte)</span>
+                </label>
+                <input type="email" id="email" name="email"
+                       placeholder="tu@email.com">
+            </div>
+
+            <button type="submit" class="btn-enviar" id="btn-enviar">
+                ENVIAR CONSULTA
+            </button>
+
+            <div class="feedback" id="feedback"></div>
+
+        </form>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <img src="./Assets/Logo/Mob_Entertainment.png" alt="Mob Entertainment" class="footer-logo">
+            <p>© 2026 Playtime Co. Fan Project — Herramienta independiente, no oficial.</p>
+            <p>Poppy Playtime y sus personajes son propiedad intelectual de <strong>Mob Entertainment, Inc.</strong></p>
+        </div>
+    </footer>
+
+    <script src="Web.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // ---- Selector de tipo ----
+        const tipoBtns = document.querySelectorAll('.tipo-btn');
+        const tipoInput = document.getElementById('tipo');
+
+        tipoBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tipoBtns.forEach(b => b.classList.remove('activo'));
+                btn.classList.add('activo');
+                tipoInput.value = btn.dataset.valor;
+            });
+        });
+
+        // ---- Contadores de caracteres ----
+        function setupCharCount(inputId, countId, limite) {
+            const el = document.getElementById(inputId);
+            const counter = document.getElementById(countId);
+            if (!el || !counter) return;
+
+            el.addEventListener('input', () => {
+                const len = el.value.length;
+                counter.textContent = len;
+                const wrapper = counter.closest('.char-count');
+                wrapper.classList.remove('warning', 'limit');
+                if (len >= limite)         wrapper.classList.add('limit');
+                else if (len >= limite * 0.85) wrapper.classList.add('warning');
+            });
+        }
+
+        setupCharCount('titulo', 'titulo-count', 150);
+        setupCharCount('descripcion', 'desc-count', 2000);
+
+        // ---- Cargar estadísticas ----
+        fetch('stats_consultas.php')
+            .then(r => r.json())
+            .then(data => {
+                if (data.bugs !== undefined) {
+                    document.getElementById('stat-bugs').textContent = data.bugs;
+                    document.getElementById('stat-propuestas').textContent = data.propuestas;
+                }
+            })
+            .catch(() => {
+                // Si el endpoint no está disponible, ocultar la barra de stats
+                document.getElementById('stats-bar').style.display = 'none';
+            });
+
+        // ---- Envío del formulario ----
+        const form = document.getElementById('form-consulta');
+        const feedback = document.getElementById('feedback');
+        const btnEnviar = document.getElementById('btn-enviar');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            feedback.className = 'feedback';
+            feedback.style.display = 'none';
+
+            // Validación cliente
+            if (!tipoInput.value) {
+                mostrarFeedback('error', '⚠ Seleccioná un tipo de consulta (Bug o Propuesta).');
+                return;
+            }
+            const titulo = document.getElementById('titulo').value.trim();
+            const desc   = document.getElementById('descripcion').value.trim();
+            if (titulo.length < 5) {
+                mostrarFeedback('error', '⚠ El título es demasiado corto (mínimo 5 caracteres).');
+                return;
+            }
+            if (desc.length < 15) {
+                mostrarFeedback('error', '⚠ La descripción es demasiado corta (mínimo 15 caracteres).');
+                return;
+            }
+
+            // Enviar
+            btnEnviar.disabled = true;
+            btnEnviar.textContent = 'ENVIANDO...';
+
+            try {
+                const formData = new FormData(form);
+                const res = await fetch('guardar_consulta.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await res.json();
+
+                if (data.ok) {
+                    mostrarFeedback('exito', '✓ ¡Consulta enviada correctamente! Gracias por el aporte.');
+                    form.reset();
+                    tipoBtns.forEach(b => b.classList.remove('activo'));
+                    tipoInput.value = '';
+                    document.getElementById('titulo-count').textContent = '0';
+                    document.getElementById('desc-count').textContent = '0';
+                } else {
+                    const msg = data.errores ? data.errores.join('<br>') : (data.error || 'Error desconocido.');
+                    mostrarFeedback('error', '✗ ' + msg);
+                }
+            } catch (err) {
+                mostrarFeedback('error', '✗ No se pudo conectar con el servidor. Verificá tu conexión.');
+            } finally {
+                btnEnviar.disabled = false;
+                btnEnviar.textContent = 'ENVIAR CONSULTA';
+            }
+        });
+
+        function mostrarFeedback(tipo, mensaje) {
+            feedback.innerHTML = mensaje;
+            feedback.className = 'feedback ' + tipo;
+            feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    });
+    </script>
+</body>
+</html>
