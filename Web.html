@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playtime Launcher | Official Site</title>
+    <link rel="stylesheet" href="Web.css">
+</head>
+<body>
+
+    <div class="theme-toggle">
+        <button id="modeBtn">CAMBIAR MODO</button>
+    </div>
+
+    <header>
+        <img src="Assets/Logo/playtimelogo.png" alt="Playtime Logo" class="main-logo">
+        <h1 class="neon-text">PLAYTIME LAUNCHER</h1>
+    </header>
+
+    <main>
+        <section id="download">
+            <div class="card">
+                <h2>OBTENER EL LAUNCHER</h2>
+                <p>La puerta a la diversión (y al caos) te espera.</p>
+                <a href="https://www.mediafire.com/tu-link-aqui" class="btn-download">DESCARGAR VÍA MEDIAFIRE</a>
+            </div>
+        </section>
+
+        <section id="tutorials">
+            <div class="card">
+                <h3>Instalación de Wine (Debian 10-13)</h3>
+                <div class="code-block">
+                    <code>
+                        sudo dpkg --add-architecture i386 <br>
+                        sudo apt update <br>
+                        sudo apt install wine64 wine32
+                    </code>
+                </div>
+                <h3>Cómo usar Playtime Launcher</h3>
+                <ol>
+                    <li>Descarga el ejecutable desde el botón superior.</li>
+                    <li>Dale permisos de ejecución: <code>chmod +x Playtime.exe</code>.</li>
+                    <li>Ábrelo con Wine y ¡disfruta!</li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="feedback">
+            <div class="card">
+                <h3>ZONA DE CONTACTO</h3>
+                <form>
+                    <input type="text" placeholder="Asunto (Bug o Propuesta)">
+                    <textarea placeholder="Cuéntanos los detalles..."></textarea>
+                    <button type="submit">ENVIAR A LA FÁBRICA</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <img src="Assets/Logo/Mob_Entertainment.png" alt="Mob Logo" width="100">
+        <p>© 2026 Playtime Co. - No nos hacemos responsables por desapariciones.</p>
+    </footer>
+
+    <script src="Web.js"></script>
+</body>
+</html>
