@@ -7,18 +7,15 @@
     <link rel="stylesheet" href="Web.css">
     <link rel="icon" href="./Assets/icon.png">
     <style>
-        /* ===== ESTILOS ESPECÍFICOS DEL FORMULARIO ===== */
         .form-section {
             max-width: 700px;
             margin: 0 auto;
             padding: 50px 30px 70px;
         }
-
         .form-intro {
             text-align: center;
             margin-bottom: 40px;
         }
-
         .form-intro p {
             color: var(--text-muted);
             font-size: 0.92rem;
@@ -26,15 +23,12 @@
             margin: 0 auto;
             line-height: 1.7;
         }
-
-        /* Selector de tipo */
         .tipo-selector {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
             margin-bottom: 28px;
         }
-
         .tipo-btn {
             display: flex;
             flex-direction: column;
@@ -42,7 +36,7 @@
             gap: 8px;
             padding: 18px 12px;
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
+            border: 2px solid var(--border-color);
             border-radius: 4px;
             color: var(--text-muted);
             font-family: var(--font-mono);
@@ -50,42 +44,38 @@
             font-weight: bold;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            transition: all var(--transition);
-            cursor: url('./Assets/Custom Cursor/cursor.png'), pointer;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
         }
-
         .tipo-btn .tipo-icon {
             font-size: 1.8rem;
             line-height: 1;
+            pointer-events: none;
         }
-
         .tipo-btn:hover {
             border-color: var(--accent);
             color: var(--accent);
             background: var(--card-bg-hover);
             box-shadow: var(--neon-main);
         }
-
         .tipo-btn.activo {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: var(--card-bg-hover);
-            box-shadow: var(--neon-main), inset 0 0 20px rgba(255,255,255,0.03);
+            border-color: var(--accent) !important;
+            color: var(--accent) !important;
+            background: var(--card-bg-hover) !important;
+            box-shadow: var(--neon-main) !important;
             text-shadow: var(--neon-main);
         }
-
         .tipo-btn.activo.bug {
-            border-color: #cc3300;
-            color: #ff6644;
-            box-shadow: var(--neon-red), inset 0 0 20px rgba(200,0,0,0.05);
+            border-color: #cc3300 !important;
+            color: #ff6644 !important;
+            box-shadow: var(--neon-red) !important;
             text-shadow: var(--neon-red);
         }
-
-        /* Campos del formulario */
         .campo {
             margin-bottom: 22px;
         }
-
         .campo label {
             display: block;
             font-size: 0.78rem;
@@ -96,13 +86,11 @@
             color: var(--text-muted);
             margin-bottom: 8px;
         }
-
         .campo label span.requerido {
             color: #cc3300;
             text-shadow: var(--neon-red);
             margin-left: 3px;
         }
-
         .campo label span.opcional {
             color: var(--text-muted);
             font-size: 0.7rem;
@@ -112,7 +100,6 @@
             text-transform: none;
             letter-spacing: 0;
         }
-
         .campo input,
         .campo textarea {
             width: 100%;
@@ -124,28 +111,24 @@
             font-family: var(--font-mono);
             font-size: 0.9rem;
             outline: none;
-            transition: border-color var(--transition), box-shadow var(--transition);
+            transition: border-color 0.2s, box-shadow 0.2s;
             resize: none;
         }
-
         .campo input::placeholder,
         .campo textarea::placeholder {
             color: var(--text-muted);
             opacity: 0.5;
         }
-
         .campo input:focus,
         .campo textarea:focus {
             border-color: var(--accent);
-            box-shadow: var(--neon-main), 0 0 0 1px rgba(255,255,255,0.05);
+            box-shadow: var(--neon-main);
             background: var(--card-bg-hover);
         }
-
         .campo textarea {
             min-height: 130px;
             line-height: 1.6;
         }
-
         .char-count {
             font-size: 0.72rem;
             color: var(--text-muted);
@@ -154,11 +137,8 @@
             opacity: 0.6;
             font-family: var(--font-mono);
         }
-
         .char-count.warning { color: #ffcc00; opacity: 1; }
         .char-count.limit   { color: #cc3300; opacity: 1; }
-
-        /* Botón enviar */
         .btn-enviar {
             width: 100%;
             padding: 16px;
@@ -170,36 +150,20 @@
             letter-spacing: 0.15em;
             text-transform: uppercase;
             box-shadow: var(--neon-main);
-            transition: all var(--transition);
-            cursor: url('./Assets/Custom Cursor/cursor.png'), pointer;
+            transition: all 0.2s ease;
+            cursor: pointer;
             position: relative;
             overflow: hidden;
         }
-
-        .btn-enviar::before {
-            content: '';
-            position: absolute;
-            top: -100%; left: 0; right: 0;
-            height: 100%;
-            background: linear-gradient(transparent, rgba(255,255,255,0.05), transparent);
-            transition: top 0.5s ease;
-        }
-
-        .btn-enviar:hover::before { top: 100%; }
-
         .btn-enviar:hover {
             background: var(--accent);
             color: #000;
             box-shadow: var(--neon-hover);
         }
-
         .btn-enviar:disabled {
             opacity: 0.4;
             cursor: not-allowed;
-            transform: none;
         }
-
-        /* Feedback */
         .feedback {
             display: none;
             text-align: center;
@@ -209,25 +173,19 @@
             font-family: var(--font-mono);
             font-size: 0.9rem;
             letter-spacing: 0.05em;
-            animation: slideUp 0.4s ease;
         }
-
         .feedback.exito {
             display: block;
             background: rgba(0, 180, 80, 0.1);
             border: 1px solid rgba(0,180,80,0.4);
             color: #00e870;
-            text-shadow: 0 0 8px rgba(0,200,80,0.5);
         }
-
         .feedback.error {
             display: block;
             background: rgba(200, 0, 0, 0.1);
             border: 1px solid rgba(200,0,0,0.4);
             color: #ff6644;
         }
-
-        /* Contador de envíos */
         .stats-bar {
             display: flex;
             gap: 20px;
@@ -235,7 +193,6 @@
             flex-wrap: wrap;
             margin-bottom: 36px;
         }
-
         .stat-item {
             display: flex;
             flex-direction: column;
@@ -247,7 +204,6 @@
             padding: 12px 24px;
             min-width: 110px;
         }
-
         .stat-num {
             font-family: var(--font-display);
             font-size: 1.8rem;
@@ -255,7 +211,6 @@
             text-shadow: var(--neon-main);
             line-height: 1;
         }
-
         .stat-label {
             font-size: 0.68rem;
             font-family: var(--font-mono);
@@ -263,7 +218,6 @@
             text-transform: uppercase;
             color: var(--text-muted);
         }
-
         @media (max-width: 600px) {
             .tipo-selector { grid-template-columns: 1fr; }
             .form-section { padding: 40px 15px 60px; }
@@ -291,7 +245,6 @@
             <p>¿Encontraste un bug? ¿Tenés una idea para mejorar el launcher? Mandanos tu mensaje y lo revisamos.</p>
         </div>
 
-        <!-- Estadísticas -->
         <div class="stats-bar" id="stats-bar">
             <div class="stat-item">
                 <span class="stat-num" id="stat-bugs">—</span>
@@ -303,18 +256,16 @@
             </div>
         </div>
 
-        <!-- Formulario -->
         <form id="form-consulta" novalidate>
 
-            <!-- Selector de tipo -->
             <div class="campo">
                 <label>Tipo de consulta <span class="requerido">*</span></label>
                 <div class="tipo-selector">
-                    <button type="button" class="tipo-btn bug" data-valor="bug">
+                    <button type="button" class="tipo-btn bug" id="btn-bug" data-valor="bug">
                         <span class="tipo-icon">🐛</span>
                         Reporte de Bug
                     </button>
-                    <button type="button" class="tipo-btn propuesta" data-valor="propuesta">
+                    <button type="button" class="tipo-btn propuesta" id="btn-propuesta" data-valor="propuesta">
                         <span class="tipo-icon">💡</span>
                         Propuesta / Update
                     </button>
@@ -322,7 +273,6 @@
                 <input type="hidden" id="tipo" name="tipo" value="">
             </div>
 
-            <!-- Título -->
             <div class="campo">
                 <label for="titulo">Título <span class="requerido">*</span></label>
                 <input type="text" id="titulo" name="titulo" maxlength="150"
@@ -330,7 +280,6 @@
                 <div class="char-count"><span id="titulo-count">0</span> / 150</div>
             </div>
 
-            <!-- Descripción -->
             <div class="campo">
                 <label for="descripcion">Descripción <span class="requerido">*</span></label>
                 <textarea id="descripcion" name="descripcion" maxlength="2000"
@@ -338,14 +287,12 @@
                 <div class="char-count"><span id="desc-count">0</span> / 2000</div>
             </div>
 
-            <!-- Email opcional -->
             <div class="campo">
                 <label for="email">
                     Email de contacto
                     <span class="opcional">(opcional — para responderte)</span>
                 </label>
-                <input type="email" id="email" name="email"
-                       placeholder="tu@email.com">
+                <input type="email" id="email" name="email" placeholder="tu@email.com">
             </div>
 
             <button type="submit" class="btn-enviar" id="btn-enviar">
@@ -368,116 +315,128 @@
 
     <script src="Web.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    // ---- Selector de tipo ----
+    var tipoSeleccionado = '';
 
-        // ---- Selector de tipo ----
-        const tipoBtns = document.querySelectorAll('.tipo-btn');
-        const tipoInput = document.getElementById('tipo');
+    document.getElementById('btn-bug').onclick = function() {
+        tipoSeleccionado = 'bug';
+        document.getElementById('tipo').value = 'bug';
+        document.getElementById('btn-bug').classList.add('activo');
+        document.getElementById('btn-propuesta').classList.remove('activo');
+    };
 
-        tipoBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                tipoBtns.forEach(b => b.classList.remove('activo'));
-                btn.classList.add('activo');
-                tipoInput.value = btn.dataset.valor;
-            });
+    document.getElementById('btn-propuesta').onclick = function() {
+        tipoSeleccionado = 'propuesta';
+        document.getElementById('tipo').value = 'propuesta';
+        document.getElementById('btn-propuesta').classList.add('activo');
+        document.getElementById('btn-bug').classList.remove('activo');
+    };
+
+    // ---- Contadores de caracteres ----
+    document.getElementById('titulo').oninput = function() {
+        var len = this.value.length;
+        var counter = document.getElementById('titulo-count');
+        counter.textContent = len;
+        var wrapper = counter.parentElement;
+        wrapper.classList.remove('warning', 'limit');
+        if (len >= 150) wrapper.classList.add('limit');
+        else if (len >= 127) wrapper.classList.add('warning');
+    };
+
+    document.getElementById('descripcion').oninput = function() {
+        var len = this.value.length;
+        var counter = document.getElementById('desc-count');
+        counter.textContent = len;
+        var wrapper = counter.parentElement;
+        wrapper.classList.remove('warning', 'limit');
+        if (len >= 2000) wrapper.classList.add('limit');
+        else if (len >= 1700) wrapper.classList.add('warning');
+    };
+
+    // ---- Cargar estadísticas ----
+    fetch('stats_consultas.php')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            if (data.bugs !== undefined) {
+                document.getElementById('stat-bugs').textContent = data.bugs;
+                document.getElementById('stat-propuestas').textContent = data.propuestas;
+            }
+        })
+        .catch(function() {
+            document.getElementById('stats-bar').style.display = 'none';
         });
 
-        // ---- Contadores de caracteres ----
-        function setupCharCount(inputId, countId, limite) {
-            const el = document.getElementById(inputId);
-            const counter = document.getElementById(countId);
-            if (!el || !counter) return;
+    // ---- Envío del formulario ----
+    document.getElementById('form-consulta').onsubmit = function(e) {
+        e.preventDefault();
 
-            el.addEventListener('input', () => {
-                const len = el.value.length;
-                counter.textContent = len;
-                const wrapper = counter.closest('.char-count');
-                wrapper.classList.remove('warning', 'limit');
-                if (len >= limite)         wrapper.classList.add('limit');
-                else if (len >= limite * 0.85) wrapper.classList.add('warning');
-            });
+        var feedback = document.getElementById('feedback');
+        feedback.className = 'feedback';
+        feedback.style.display = 'none';
+
+        var tipo = document.getElementById('tipo').value;
+        var titulo = document.getElementById('titulo').value.trim();
+        var desc = document.getElementById('descripcion').value.trim();
+        var email = document.getElementById('email').value.trim();
+
+        if (!tipo) {
+            feedback.innerHTML = '⚠ Seleccioná un tipo de consulta (Bug o Propuesta).';
+            feedback.className = 'feedback error';
+            return;
+        }
+        if (titulo.length < 5) {
+            feedback.innerHTML = '⚠ El título es demasiado corto (mínimo 5 caracteres).';
+            feedback.className = 'feedback error';
+            return;
+        }
+        if (desc.length < 15) {
+            feedback.innerHTML = '⚠ La descripción es demasiado corta (mínimo 15 caracteres).';
+            feedback.className = 'feedback error';
+            return;
         }
 
-        setupCharCount('titulo', 'titulo-count', 150);
-        setupCharCount('descripcion', 'desc-count', 2000);
+        var btnEnviar = document.getElementById('btn-enviar');
+        btnEnviar.disabled = true;
+        btnEnviar.textContent = 'ENVIANDO...';
 
-        // ---- Cargar estadísticas ----
-        fetch('stats_consultas.php')
-            .then(r => r.json())
-            .then(data => {
-                if (data.bugs !== undefined) {
-                    document.getElementById('stat-bugs').textContent = data.bugs;
-                    document.getElementById('stat-propuestas').textContent = data.propuestas;
-                }
-            })
-            .catch(() => {
-                // Si el endpoint no está disponible, ocultar la barra de stats
-                document.getElementById('stats-bar').style.display = 'none';
-            });
+        var params = new URLSearchParams();
+        params.append('tipo', tipo);
+        params.append('titulo', titulo);
+        params.append('descripcion', desc);
+        params.append('email', email);
 
-        // ---- Envío del formulario ----
-        const form = document.getElementById('form-consulta');
-        const feedback = document.getElementById('feedback');
-        const btnEnviar = document.getElementById('btn-enviar');
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            feedback.className = 'feedback';
-            feedback.style.display = 'none';
-
-            // Validación cliente
-            if (!tipoInput.value) {
-                mostrarFeedback('error', '⚠ Seleccioná un tipo de consulta (Bug o Propuesta).');
-                return;
+        fetch('guardar_consulta.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: params.toString()
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+            if (data.ok) {
+                feedback.innerHTML = '✓ ¡Consulta enviada correctamente! Gracias por el aporte.';
+                feedback.className = 'feedback exito';
+                document.getElementById('form-consulta').reset();
+                document.getElementById('btn-bug').classList.remove('activo');
+                document.getElementById('btn-propuesta').classList.remove('activo');
+                document.getElementById('tipo').value = '';
+                tipoSeleccionado = '';
+                document.getElementById('titulo-count').textContent = '0';
+                document.getElementById('desc-count').textContent = '0';
+            } else {
+                var msg = data.errores ? data.errores.join(', ') : (data.error || 'Error desconocido.');
+                feedback.innerHTML = '✗ ' + msg;
+                feedback.className = 'feedback error';
             }
-            const titulo = document.getElementById('titulo').value.trim();
-            const desc   = document.getElementById('descripcion').value.trim();
-            if (titulo.length < 5) {
-                mostrarFeedback('error', '⚠ El título es demasiado corto (mínimo 5 caracteres).');
-                return;
-            }
-            if (desc.length < 15) {
-                mostrarFeedback('error', '⚠ La descripción es demasiado corta (mínimo 15 caracteres).');
-                return;
-            }
-
-            // Enviar
-            btnEnviar.disabled = true;
-            btnEnviar.textContent = 'ENVIANDO...';
-
-            try {
-                const formData = new FormData(form);
-                const res = await fetch('guardar_consulta.php', {
-                    method: 'POST',
-                    body: formData
-                });
-                const data = await res.json();
-
-                if (data.ok) {
-                    mostrarFeedback('exito', '✓ ¡Consulta enviada correctamente! Gracias por el aporte.');
-                    form.reset();
-                    tipoBtns.forEach(b => b.classList.remove('activo'));
-                    tipoInput.value = '';
-                    document.getElementById('titulo-count').textContent = '0';
-                    document.getElementById('desc-count').textContent = '0';
-                } else {
-                    const msg = data.errores ? data.errores.join('<br>') : (data.error || 'Error desconocido.');
-                    mostrarFeedback('error', '✗ ' + msg);
-                }
-            } catch (err) {
-                mostrarFeedback('error', '✗ No se pudo conectar con el servidor. Verificá tu conexión.');
-            } finally {
-                btnEnviar.disabled = false;
-                btnEnviar.textContent = 'ENVIAR CONSULTA';
-            }
+        })
+        .catch(function() {
+            feedback.innerHTML = '✗ No se pudo conectar con el servidor.';
+            feedback.className = 'feedback error';
+        })
+        .finally(function() {
+            btnEnviar.disabled = false;
+            btnEnviar.textContent = 'ENVIAR CONSULTA';
         });
-
-        function mostrarFeedback(tipo, mensaje) {
-            feedback.innerHTML = mensaje;
-            feedback.className = 'feedback ' + tipo;
-            feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-    });
+    };
     </script>
 </body>
 </html>
