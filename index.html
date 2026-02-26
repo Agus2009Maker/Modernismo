@@ -10,11 +10,39 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
+/* ===== REC INDICATOR HERO ===== */
 .rec-indicator.rec-hero {
-    animation: blinkDot 1s infinite;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.25em;
+    color: #ff2200;
+    text-shadow: 0 0 8px rgba(255,34,0,0.8), 0 0 20px rgba(255,34,0,0.4);
+    animation: recTextBlink 2s ease-in-out infinite;
 }
+
 .rec-indicator.rec-hero::before {
-    animation: blinkDot 1s infinite;
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ff2200;
+    box-shadow: 0 0 6px #ff2200, 0 0 14px rgba(255,34,0,0.7);
+    animation: recDotBlink 1s infinite;
+    flex-shrink: 0;
+}
+
+@keyframes recDotBlink {
+    0%, 100% { opacity: 1; box-shadow: 0 0 6px #ff2200, 0 0 14px rgba(255,34,0,0.7); }
+    50%       { opacity: 0.1; box-shadow: none; }
+}
+
+@keyframes recTextBlink {
+    0%, 45%, 55%, 100% { opacity: 1; }
+    50%                 { opacity: 0.3; }
 }
 </style>
 </head>
@@ -36,7 +64,7 @@
 
     <!-- HERO -->
     <header id="inicio" class="hero fade-in">
-        <div class="rec-indicator rec-hero" style="display:inline-flex; margin-bottom: 16px;">REC</div>
+        <div class="rec-indicator rec-hero" style="margin-bottom: 16px;">REC</div>
         <img src="./Assets/Logo/playtimelogo.png" alt="Playtime Logo" class="main-logo float-anim">
         <h1 class="neon-text">PLAYTIME LAUNCHER</h1>
         <p>Tu portal definitivo. Gestiona y lanza todos los capítulos de Poppy Playtime desde un solo lugar.</p>
