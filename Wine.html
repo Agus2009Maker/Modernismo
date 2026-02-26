@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Instalar Wine - Playtime Launcher</title>
+    <link rel="stylesheet" href="Web.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul><li><a href="Web.html">Volver al Inicio</a></li></ul>
+    </nav>
+
+    <main class="slide-up">
+        <section class="glass-panel">
+            <h1 class="neon-text">Instalación de Wine (Debian 10 - 13)</h1>
+            <p>Sigue estos pasos para poder ejecutar los capítulos de Poppy Playtime en Linux.</p>
+            
+            <div class="step">
+                <h3>Paso 1: Habilitar 32 bits</h3>
+                <code>sudo dpkg --add-architecture i386</code>
+            </div>
+
+            <div class="step">
+                <h3>Paso 2: Agregar repositorio oficial (WineHQ)</h3>
+                <p>Descarga la llave de seguridad:</p>
+                <code>sudo mkdir -pm755 /etc/apt/keyrings</code><br>
+                <code>sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key</code>
+            </div>
+
+            <div class="step">
+                <h3>Paso 3: Selecciona tu versión de Debian</h3>
+                <p>Ejecuta SOLO el comando que corresponda a tu sistema:</p>
+                
+                <strong>Debian 12/13:</strong>
+                <code>sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources</code>
+                
+                <strong>Debian 11:</strong>
+                <code>sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources</code>
+            </div>
+
+            <div class="step">
+                <h3>Paso 4: Instalar Wine</h3>
+                <code>sudo apt update</code><br>
+                <code>sudo apt install --install-recommends winehq-stable</code>
+            </div>
+
+            <div class="alert">
+                <strong>💡 NOTA:</strong> Al finalizar, verifica con <code>wine --version</code>. Recuerda que esto es para los juegos, no para el launcher.
+            </div>
+        </section>
+    </main>
+</body>
+</html>
