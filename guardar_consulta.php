@@ -69,7 +69,5 @@ try {
 } catch (PDOException $e) {
     http_response_code(500);
     echo json_encode(['ok' => false, 'error' => 'Error interno del servidor. Intenta más tarde.']);
-    // Para debug en desarrollo, podés descomentar la siguiente línea:
-    // echo json_encode(['ok' => false, 'error' => $e->getMessage()]);
 }
 ?>
