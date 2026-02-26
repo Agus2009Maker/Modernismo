@@ -9,6 +9,14 @@
     <link rel="icon" href="./Assets/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+.rec-indicator.rec-hero {
+    animation: blinkDot 1s infinite;
+}
+.rec-indicator.rec-hero::before {
+    animation: blinkDot 1s infinite;
+}
+</style>
 </head>
 <body>
 
@@ -28,7 +36,7 @@
 
     <!-- HERO -->
     <header id="inicio" class="hero fade-in">
-        <div class="rec-indicator" style="display:inline-flex; margin-bottom: 16px;">REC</div>
+        <div class="rec-indicator rec-hero" style="display:inline-flex; margin-bottom: 16px;">REC</div>
         <img src="./Assets/Logo/playtimelogo.png" alt="Playtime Logo" class="main-logo float-anim">
         <h1 class="neon-text">PLAYTIME LAUNCHER</h1>
         <p>Tu portal definitivo. Gestiona y lanza todos los capítulos de Poppy Playtime desde un solo lugar.</p>
