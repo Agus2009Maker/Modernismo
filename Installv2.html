@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Instalación 2.0 - Playtime Launcher</title>
+    <link rel="stylesheet" href="Web.css">
+    <link rel="icon" href="./Assets/icon.png">
+</head>
+<body>
+
+    <nav class="navbar">
+        <img src="./Assets/Logo/Mob_Entertainment.png" alt="Mob Entertainment" class="nav-logo">
+        <ul>
+            <li><a href="index.html">← Volver al Inicio</a></li>
+            <li><a href="Install.html">Instalar 1.0</a></li>
+            <li><a href="installv2.html" class="neon-link">Instalar 2.0</a></li>
+            <li><a href="Version.html">Steam &amp; Versiones</a></li>
+            <li><a href="Wine.html">Wine (Linux)</a></li>
+        </ul>
+        <button id="theme-toggle" class="btn-neon">Modo Diurno ☀️</button>
+    </nav>
+
+    <main class="fade-in">
+
+        <div style="text-align:center; margin-bottom: 40px;">
+            <div class="rec-indicator" style="display:inline-flex; margin-bottom:12px;">NUEVA VERSIÓN</div>
+            <h1 class="neon-text">Manual de Instalación 2.0</h1>
+            <p style="color:var(--text-muted); font-size:0.92rem; max-width:580px; margin:0 auto;">
+                Versión 2.0 del Playtime Launcher — interfaz rediseñada y mejoras de UI.
+                Sigue estos pasos para instalarla correctamente en tu sistema.
+            </p>
+        </div>
+
+        <!-- ======== DESCARGA ======== -->
+        <h2 class="neon-text" style="font-size:1.6rem; margin-bottom:20px;">1. Descarga</h2>
+
+        <div class="glass-panel" style="display:flex; gap:20px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+            <div style="flex:1; min-width:220px;">
+                <h3 style="font-family:var(--font-display); font-size:1.3rem; color:var(--accent); text-shadow:var(--neon-main); margin-bottom:8px;">
+                    🪟 Windows
+                </h3>
+                <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:14px;">
+                    Compatible con Windows 10 y Windows 11 (64-bit). Descarga el <code>.rar</code> y extráelo en cualquier carpeta.
+                </p>
+                <a href="https://www.mediafire.com/file/42g3v2y42xenhgm/Playtime_Launcher_2.0_Windows.rar/file"
+                   target="_blank" rel="noopener" class="btn-download windows" style="width:100%; justify-content:center;">
+                    DESCARGAR WINDOWS 2.0
+                </a>
+            </div>
+            <div style="width:1px; background:var(--border-color); align-self:stretch; display:block;"></div>
+            <div style="flex:1; min-width:220px;">
+                <h3 style="font-family:var(--font-display); font-size:1.3rem; color:var(--accent-secondary); text-shadow:var(--neon-red); margin-bottom:8px;">
+                    🐧 Linux
+                </h3>
+                <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:14px;">
+                    Testado en Debian 10–13 y derivados (Ubuntu, Mint). Descarga el <code>.rar</code> y extráelo. Requiere Wine para ejecutar los capítulos.
+                </p>
+                <a href="https://www.mediafire.com/file/2n2zjocftjn43xd/Playtime_Launcher_2.0_Linux.rar/file"
+                   target="_blank" rel="noopener" class="btn-download linux" style="width:100%; justify-content:center;">
+                    DESCARGAR LINUX 2.0
+                </a>
+            </div>
+        </div>
+
+        <!-- ======== WINDOWS ======== -->
+        <h2 class="neon-text" style="font-size:1.6rem; margin: 40px 0 20px;">2. Instalación en Windows</h2>
+
+        <div class="step slide-up">
+            <h3>Paso 1 — Extraer el archivo</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem;">
+                Una vez descargado el <code>Playtime_Launcher_2.0_Windows.rar</code>, necesitas un extractor de archivos.
+                Se recomienda <strong style="color:var(--text-color);">WinRAR</strong> o <strong style="color:var(--text-color);">7-Zip</strong> (ambos gratuitos).
+            </p>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:8px;">
+                Haz clic derecho sobre el archivo <code>.rar</code> → <strong style="color:var(--text-color);">Extraer aquí</strong> (o en la carpeta que prefieras).
+            </p>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:8px;">
+                Al extraer, el programa te pedirá una <strong style="color:var(--text-color);">contraseña</strong>. Introdúcela exactamente así (respetando mayúsculas):
+            </p>
+            <div class="code-wrapper" style="margin-top:10px;">
+                <code>MegaGames</code>
+                <button class="copy-btn">COPIAR</button>
+            </div>
+        </div>
+
+        <div class="step slide-up">
+            <h3>Paso 2 — Ejecutar el Launcher</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem;">
+                Dentro de la carpeta extraída, busca el archivo <code>PlaytimeLauncher.exe</code> y haz doble clic para iniciarlo.
+            </p>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:8px;">
+                En algunos casos Windows puede mostrar una advertencia de SmartScreen. Haz clic en
+                <strong style="color:var(--text-color);">«Más información»</strong> →
+                <strong style="color:var(--text-color);">«Ejecutar de todas formas»</strong>.
+            </p>
+            <span class="tip">💡 No es necesario instalar nada. El launcher funciona de forma portable desde cualquier carpeta.</span>
+            <div class="alert" style="margin-top:14px; border-color: rgba(255,204,0,0.5); background: rgba(255,204,0,0.07); color: #ffe066;">
+                <strong style="color:#ffcc00; text-shadow: 0 0 8px rgba(255,204,0,0.6);">⚠️ MUY IMPORTANTE — NO MOVER NI MODIFICAR LOS ARCHIVOS</strong>
+                <p style="margin-top:10px; font-size:0.88rem; line-height:1.7;">
+                    Al extraer el <code>.rar</code> obtendrás varios archivos (generalmente 3 o 4), entre ellos:
+                    el <code>.exe</code> del launcher, un <code>.txt</code> con datos necesarios para el funcionamiento,
+                    y uno o dos archivos adicionales de configuración.
+                </p>
+                <p style="margin-top:8px; font-size:0.88rem; line-height:1.7;">
+                    <strong style="color:#ffcc00;">Todos deben permanecer juntos en la misma carpeta.</strong>
+                    No muevas el <code>.exe</code> a otra ubicación, no borres el <code>.txt</code> y no modifiques ninguno de los archivos.
+                    Si los separas o eliminas alguno, el launcher dejará de funcionar correctamente.
+                </p>
+            </div>
+        </div>
+
+        <div class="step slide-up">
+            <h3>Paso 3 — Tener Steam abierto</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem;">
+                El launcher detecta automáticamente tus juegos de Steam. Asegúrate de que
+                <strong style="color:var(--text-color);">Steam esté abierto e iniciado con tu cuenta</strong> antes de lanzar cualquier capítulo.
+            </p>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:8px;">
+                Los capítulos que no poseas en Steam aparecerán bloqueados. Puedes usar versiones personalizadas —
+                <a href="Version.html">ver guía de versiones →</a>
+            </p>
+        </div>
+
+        <!-- ======== LINUX ======== -->
+        <h2 class="neon-text" style="font-size:1.6rem; margin: 40px 0 20px;">3. Instalación en Linux</h2>
+
+        <div class="step slide-up">
+            <h3>Paso 1 — Abrir la Terminal</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem;">
+                Todos los comandos de Linux se ejecutan desde la terminal. En Debian podés abrirla con el siguiente atajo de teclado:
+            </p>
+            <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin: 16px 0;">
+                <kbd style="background:#111; border:1px solid var(--accent); border-radius:5px; padding:8px 14px; font-family:var(--font-mono); font-size:1.1rem; color:var(--accent); text-shadow:var(--neon-main); box-shadow:var(--neon-main);">Ctrl</kbd>
+                <span style="color:var(--text-muted); font-size:1.2rem;">+</span>
+                <kbd style="background:#111; border:1px solid var(--accent); border-radius:5px; padding:8px 14px; font-family:var(--font-mono); font-size:1.1rem; color:var(--accent); text-shadow:var(--neon-main); box-shadow:var(--neon-main);">Alt</kbd>
+                <span style="color:var(--text-muted); font-size:1.2rem;">+</span>
+                <kbd style="background:#111; border:1px solid var(--accent); border-radius:5px; padding:8px 14px; font-family:var(--font-mono); font-size:1.1rem; color:var(--accent); text-shadow:var(--neon-main); box-shadow:var(--neon-main);">T</kbd>
+            </div>
+            <span class="tip">💡 Si el atajo no funciona, también podés buscar «Terminal» en el menú de aplicaciones de tu escritorio.</span>
+        </div>
+
+        <div class="step slide-up">
+            <h3>Paso 2 — Extraer el archivo</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem;">
+                Usa <code>unrar</code> o un gestor gráfico como <strong style="color:var(--text-color);">File Roller</strong> para extraer el <code>.rar</code>.
+                Si no tienes unrar, instálalo con:
+            </p>
+            <div class="code-wrapper" style="margin-top:10px;">
+                <code>sudo apt install unrar</code>
+                <button class="copy-btn">COPIAR</button>
+            </div>
+            <div class="code-wrapper" style="margin-top:8px;">
+                <code>unrar x Playtime_Launcher_2.0_Linux.rar</code>
+                <button class="copy-btn">COPIAR</button>
+            </div>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:10px;">
+                Al extraer te pedirá una <strong style="color:var(--text-color);">contraseña</strong>. Introdúcela exactamente así (respetando mayúsculas):
+            </p>
+            <div class="code-wrapper" style="margin-top:8px;">
+                <code>MegaGames</code>
+                <button class="copy-btn">COPIAR</button>
+            </div>
+            <div class="alert" style="margin-top:14px; border-color: rgba(255,204,0,0.5); background: rgba(255,204,0,0.07); color: #ffe066;">
+                <strong style="color:#ffcc00; text-shadow: 0 0 8px rgba(255,204,0,0.6);">⚠️ MUY IMPORTANTE — NO MOVER NI MODIFICAR LOS ARCHIVOS</strong>
+                <p style="margin-top:10px; font-size:0.88rem; line-height:1.7;">
+                    Al extraer obtendrás varios archivos (generalmente 3 o 4): el binario del launcher, un <code>.txt</code>
+                    con datos necesarios para el funcionamiento, y uno o dos archivos de configuración adicionales.
+                </p>
+                <p style="margin-top:8px; font-size:0.88rem; line-height:1.7;">
+                    <strong style="color:#ffcc00;">Todos deben permanecer juntos en la misma carpeta.</strong>
+                    No muevas el ejecutable por separado, no elimines el <code>.txt</code> y no modifiques ningún archivo.
+                    Si los separas, el launcher dejará de funcionar correctamente.
+                </p>
+            </div>
+        </div>
+
+        <div class="step slide-up">
+            <h3>Paso 3 — Dar permisos de ejecución</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem;">
+                Navega a la carpeta extraída y da permisos de ejecución al binario del launcher:
+            </p>
+            <div class="code-wrapper" style="margin-top:10px;">
+                <code>chmod +x PlaytimeLauncher</code>
+                <button class="copy-btn">COPIAR</button>
+            </div>
+        </div>
+
+        <div class="step slide-up">
+            <h3>Paso 4 — Ejecutar el Launcher</h3>
+            <div class="code-wrapper">
+                <code>./PlaytimeLauncher</code>
+                <button class="copy-btn">COPIAR</button>
+            </div>
+            <span class="tip">💡 También puedes hacer doble clic en el archivo desde tu gestor de archivos si ya tiene permisos de ejecución.</span>
+        </div>
+
+        <div class="step slide-up">
+            <h3>Paso 5 — Instalar Wine (para los juegos)</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem;">
+                El launcher en Linux es nativo, pero los capítulos del juego son ejecutables de Windows (<code>.exe</code>).
+                Necesitas <strong style="color:var(--text-color);">Wine</strong> para ejecutarlos.
+            </p>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:8px;">
+                Consulta la guía completa de instalación de Wine:
+                <a href="Wine.html">Manual de Wine para Linux →</a>
+            </p>
+        </div>
+
+        <!-- ======== PROBLEMAS COMUNES ======== -->
+        <h2 class="neon-text" style="font-size:1.6rem; margin: 40px 0 20px;">4. Problemas Frecuentes</h2>
+
+        <div class="info-box slide-up">
+            <p><strong>El launcher no detecta mis juegos de Steam</strong><br>
+            Asegúrate de que Steam esté abierto e iniciado antes de abrir el launcher. Si el problema persiste, cierra ambos y vuelve a abrirlos en orden: primero Steam, luego el launcher.</p>
+        </div>
+
+        <div class="info-box slide-up">
+            <p><strong>Windows bloquea el .exe con SmartScreen</strong><br>
+            Es normal para software no firmado digitalmente. Haz clic en <strong>«Más información»</strong> y luego en <strong>«Ejecutar de todas formas»</strong>. El launcher no contiene malware.</p>
+        </div>
+
+        <div class="info-box slide-up">
+            <p><strong>El capítulo aparece bloqueado aunque lo tengo en Steam</strong><br>
+            Verifica que hayas iniciado sesión en Steam con la cuenta correcta. Si el juego está en otra cuenta, usa la opción de <a href="Version.html">Versión Manual</a> apuntando al <code>.exe</code> del juego.</p>
+        </div>
+
+        <div class="info-box slide-up">
+            <p><strong>En Linux: el launcher abre pero los juegos no arrancan</strong><br>
+            Necesitas Wine instalado y configurado. Sigue la <a href="Wine.html">guía de instalación de Wine →</a> y luego configura la ruta del <code>.exe</code> en el panel de versiones del launcher.</p>
+        </div>
+
+        <div class="alert" style="margin-top: 20px;">
+            <strong>📋 REQUISITOS MÍNIMOS:</strong> Windows 10/11 (64-bit) o Linux con kernel 5.0+.
+            Se recomienda tener Steam instalado para aprovechar la sincronización de logros y progreso en la nube.
+        </div>
+
+        <!-- VOLVER A 1.0 -->
+        <div style="text-align:center; margin-top:40px;">
+            <p style="color:var(--text-muted); font-size:0.85rem;">
+                ¿Buscás la versión anterior? →
+                <a href="Install.html" style="color:var(--text-muted); text-decoration:underline;">Guía de instalación 1.0</a>
+            </p>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <img src="./Assets/Logo/Mob_Entertainment.png" alt="Mob Entertainment" class="footer-logo">
+            <p>© 2026 Playtime Co. Fan Project — Herramienta independiente, no oficial.</p>
+            <p>Poppy Playtime y sus personajes son propiedad intelectual de <strong>Mob Entertainment, Inc.</strong></p>
+            <p>El uso de este launcher requiere la posesión legal de los archivos del juego.</p>
+        </div>
+    </footer>
+
+    <script src="Web.js"></script>
+</body>
+</html>
