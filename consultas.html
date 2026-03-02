@@ -354,7 +354,7 @@
     };
 
     // ---- Cargar estadísticas ----
-    fetch('https://7faf-143-105-136-68.ngrok-free.app/stats_consultas.php')
+    fetch('https://5576-143-105-136-68.ngrok-free.app/stats_consultas.php')
         .then(function(r) { return r.json(); })
         .then(function(data) {
             if (data.bugs !== undefined) {
@@ -405,7 +405,7 @@
         params.append('descripcion', desc);
         params.append('email', email);
 
-        fetch('https://7faf-143-105-136-68.ngrok-free.app/guardar_consulta.php', {
+        fetch('https://5576-143-105-136-68.ngrok-free.app/guardar_consulta.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: params.toString()
